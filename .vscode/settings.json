@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Saxion Escape Beta 0.1.sln"
+    "dotnet.defaultSolution": "SaxionEscape.sln"
 }
