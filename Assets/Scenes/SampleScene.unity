@@ -264,16 +264,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa27cf0472f90b4468941d78339bf01a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 700
+  m_JumpForce: 664
   m_CrouchSpeed: 0.36
-  m_MovementSmoothing: 0.05
+  m_MovementSmoothing: 0.113
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 4294967295
   m_GroundCheck: {fileID: 1302943489}
   m_CeilingCheck: {fileID: 589177843}
-  m_CrouchDisableCollider: {fileID: 0}
+  m_CrouchDisableCollider: {fileID: 46945318}
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 46945320}
-  runSpeed: 150
+  runSpeed: 125.6
 --- !u!1 &416846391
 GameObject:
   m_ObjectHideFlags: 0
