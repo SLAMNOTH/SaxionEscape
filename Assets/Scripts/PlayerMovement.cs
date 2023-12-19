@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,4 +63,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
     }
+
+
 }
+
