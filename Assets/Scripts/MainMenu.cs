@@ -1,47 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public Dropdown levelDropdown; // Reference to the dropdown UI element in the Options menu
-
     private void Start()
     {
-        // Check if the selected level is stored in player preferences
+        InitializeSelectedLevel();
+    }
+
+    private void InitializeSelectedLevel()
+    {
+        int defaultLevelIndex = 0; // Set your default level index here
+
         if (PlayerPrefs.HasKey("SelectedLevel"))
         {
             int selectedLevelIndex = PlayerPrefs.GetInt("SelectedLevel");
-            levelDropdown.value = selectedLevelIndex;
+            PersistentManager.selectedLevelIndex = selectedLevelIndex;
+        }
+        else
+        {
+            Debug.Log("No SelectedLevel key found in PlayerPrefs. Using default level.");
+
+            // Set the default level index
+            PersistentManager.selectedLevelIndex = defaultLevelIndex;
         }
     }
 
     public void OnPlayButton()
     {
-        string selectedLevelName = "Level" + (levelDropdown.value + 1); // Assuming level names are Level1, Level2, ...
+        LoadSelectedLevel();
+    }
+
+    private void LoadSelectedLevel()
+    {
+        int selectedLevelIndex = PersistentManager.selectedLevelIndex;
+        string selectedLevelName = "Level" + (selectedLevelIndex + 1);
+
+        // Log information for debugging
+        Debug.Log($"Selected Level Index: {selectedLevelIndex}");
+        Debug.Log($"Selected Level Name: {selectedLevelName}");
+
         SceneManager.LoadScene(selectedLevelName);
     }
 
     public void OnOptionsButton()
     {
-        // Your options menu logic here
+        SceneManager.LoadScene("Options");
+    }
+
+    public void OnMenuButton()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     public void OnExitButton()
     {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
-            Application.Quit();
-        #endif
-    }
-
-    // Method to save the selected level index when changed in the dropdown
-    public void OnLevelDropdownChanged()
-    {
-        PlayerPrefs.SetInt("SelectedLevel", levelDropdown.value);
-        PlayerPrefs.Save();
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
