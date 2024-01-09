@@ -9,6 +9,7 @@ public class CoinManager : MonoBehaviour
     public int coinCount;
     public TMP_Text coinText;
     public GameObject door;
+    public AudioClip coinSound;
     private bool doorDestroyed;
     // Start is called before the first frame update
     void Start()

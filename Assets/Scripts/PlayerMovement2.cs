@@ -24,6 +24,7 @@ public class CharacterController2D : MonoBehaviour
 
 	public UnityEvent OnLandEvent;
     public CoinManager cm;
+    public AudioClip coinSound;
 
     [System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
@@ -151,6 +152,7 @@ public class CharacterController2D : MonoBehaviour
 		{
 			Destroy(other.gameObject);
 			cm.coinCount++;
+			AudioSource.PlayClipAtPoint(coinSound, transform.position);
 		}
     }
 }
