@@ -1,47 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public Dropdown levelDropdown; // Reference to the dropdown UI element in the Options menu
-
-    private void Start()
+    public void StartGame()
     {
-        // Check if the selected level is stored in player preferences
-        if (PlayerPrefs.HasKey("SelectedLevel"))
-        {
-            int selectedLevelIndex = PlayerPrefs.GetInt("SelectedLevel");
-            levelDropdown.value = selectedLevelIndex;
-        }
+        SceneManager.LoadScene("Level1");
     }
 
-    public void OnPlayButton()
+    public void OpenOptions()
     {
-        string selectedLevelName = "Level" + (levelDropdown.value + 1); // Assuming level names are Level1, Level2, ...
-        SceneManager.LoadScene(selectedLevelName);
+        // Replace "Options" with the name of your options scene
+        SceneManager.LoadScene("Options");
     }
 
-    public void OnOptionsButton()
+    public void ExitGame()
     {
-        // Your options menu logic here
+        Application.Quit();
     }
 
-    public void OnExitButton()
+    public void GoBack()
     {
-        #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-        #else
-            Application.Quit();
-        #endif
-    }
-
-    // Method to save the selected level index when changed in the dropdown
-    public void OnLevelDropdownChanged()
-    {
-        PlayerPrefs.SetInt("SelectedLevel", levelDropdown.value);
-        PlayerPrefs.Save();
+        SceneManager.LoadScene("Menu");
     }
 }
