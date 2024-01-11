@@ -356,7 +356,6 @@ MonoBehaviour:
         m_CallState: 2
   cm: {fileID: 1338237455}
   coinSound: {fileID: 8300000, guid: f1c511f78d56b7d47800652dc20c4814, type: 3}
-  jumpSound: {fileID: 0}
   OnCrouchEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1503,7 +1502,7 @@ Transform:
   m_GameObject: {fileID: 155970915}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.92, y: 14.51, z: 1.14}
+  m_LocalPosition: {x: 42.5, y: -0.4, z: 1.14}
   m_LocalScale: {x: 1.3703, y: 1.3703, z: 1.3703}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1551,7 +1550,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.85226405}
