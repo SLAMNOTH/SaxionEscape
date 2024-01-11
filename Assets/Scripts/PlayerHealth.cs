@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -49,6 +51,7 @@ public class PlayerHealth : MonoBehaviour
                 playerSr.enabled = false;
                 playerMovement.enabled = false;
                 AudioSource.PlayClipAtPoint(gameOverSound, transform.position);
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
 
             // Set cooldown
