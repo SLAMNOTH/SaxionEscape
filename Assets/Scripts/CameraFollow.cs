@@ -30,6 +30,12 @@ public class CameraFollow : MonoBehaviour
                 // Follow on both x and y axes
                 desiredPosition = new Vector3(target.position.x + offset.x, target.position.y + offset.y, transform.position.z);
             }
+
+            else if (sceneName == "Level4")
+            {
+                // Follow on both x and y axes
+                desiredPosition = new Vector3(target.position.x + offset.x, target.position.y + offset.y, transform.position.z);
+            }
             else
             {
                 // Default behavior
