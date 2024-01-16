@@ -16,6 +16,8 @@ public class PlayerHealth : MonoBehaviour
 
     public SpriteRenderer playerSr;
     public PlayerMovement playerMovement;
+    public GameManagerScript gameManager;
+    private bool isdead;
 
     // Start is called before the first frame update
     void Start()
@@ -46,12 +48,12 @@ public class PlayerHealth : MonoBehaviour
         if (canTakeDamage)
         {
             health -= amount;
-            if (health <= 0)
+            if (health <= 0 && !isdead)
             {
+                isdead = true;
                 playerSr.enabled = false;
                 playerMovement.enabled = false;
-                AudioSource.PlayClipAtPoint(gameOverSound, transform.position);
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                gameManager.gameOver();
             }
 
             // Set cooldown
@@ -66,6 +68,9 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
+
+
+
 
     IEnumerator BlinkPlayer()
     {
