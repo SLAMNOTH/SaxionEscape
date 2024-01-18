@@ -17,6 +17,7 @@ public class PlayerHealth : MonoBehaviour
     public SpriteRenderer playerSr;
     public PlayerMovement playerMovement;
     public GameManagerScript gameManager;
+    public CoinManager coinManager;
     private bool isdead;
 
     // Start is called before the first frame update
@@ -53,6 +54,7 @@ public class PlayerHealth : MonoBehaviour
                 isdead = true;
                 playerSr.enabled = false;
                 playerMovement.enabled = false;
+                playerMovement.GetComponent<CharacterController2D>().enabled = false;
                 gameManager.gameOver();
             }
 
