@@ -3,7 +3,6 @@ using UnityEngine;
 public class PowerUp : MonoBehaviour
 {
     public AudioClip koffieSound;
-
     public float speedBoost = 20f; // Adjust the boost value as needed
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -16,11 +15,14 @@ public class PowerUp : MonoBehaviour
             {
                 AudioSource.PlayClipAtPoint(koffieSound, transform.position);
                 playerMovement.ApplySpeedBoost(speedBoost);
+                playerMovement.koffieSoundGespeeld = false;
             }
 
             // Destroy the power-up GameObject
             Destroy(gameObject);
+
         }
     }
+
 }
 

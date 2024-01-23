@@ -25,6 +25,7 @@ public class CharacterController2D : MonoBehaviour
 	public UnityEvent OnLandEvent;
     public CoinManager cm;
     public AudioClip coinSound;
+    AudioSource jumpsound;
 
     [System.Serializable]
 	public class BoolEvent : UnityEvent<bool> { }
@@ -128,9 +129,12 @@ public class CharacterController2D : MonoBehaviour
 		// If the player should jump...
 		if (m_Grounded && jump)
 		{
-			// Add a vertical force to the player.
+            jumpsound = GetComponent<AudioSource>();
+            // Add a vertical force to the player.
+            jumpsound.Play();
 			m_Grounded = false;
 			m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
+
 		}
 	}
 

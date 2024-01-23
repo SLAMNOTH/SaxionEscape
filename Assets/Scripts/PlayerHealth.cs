@@ -19,6 +19,8 @@ public class PlayerHealth : MonoBehaviour
     public GameManagerScript gameManager;
     public CoinManager coinManager;
     private bool isdead;
+    public AudioClip damageTaken;
+
 
     // Start is called before the first frame update
     void Start()
@@ -49,11 +51,14 @@ public class PlayerHealth : MonoBehaviour
         if (canTakeDamage)
         {
             health -= amount;
+            AudioSource.PlayClipAtPoint(damageTaken, transform.position);
+
             if (health <= 0 && !isdead)
             {
                 isdead = true;
                 playerSr.enabled = false;
                 playerMovement.enabled = false;
+                AudioSource.PlayClipAtPoint(gameOverSound, transform.position);
                 playerMovement.GetComponent<CharacterController2D>().enabled = false;
                 gameManager.gameOver();
             }

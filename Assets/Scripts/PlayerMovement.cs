@@ -10,6 +10,10 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
     public Animator animator;
+    public AudioClip koffieSoundAfgelopen;
+    public PowerUp powerup;
+    public bool koffieSoundGespeeld;
+
 
     // Power-up variables
     private float originalRunSpeed;
@@ -69,9 +73,12 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator ResetSpeedBoost(float duration)
     {
+        koffieSoundGespeeld = false;
         yield return new WaitForSeconds(duration);
         runSpeed = originalRunSpeed;
         isSpeedBoosted = false;
+        PlayCoffeeSound();
+
     }
 
     // Method to apply the speed boost
@@ -80,4 +87,14 @@ public class PlayerMovement : MonoBehaviour
         runSpeed += boostAmount;
         isSpeedBoosted = true;
     }
+
+    public void PlayCoffeeSound()
+    {
+        if (koffieSoundGespeeld == false)
+        {
+            AudioSource.PlayClipAtPoint(koffieSoundAfgelopen, transform.position);
+            koffieSoundGespeeld = true;
+        }
+    }
 }
+
