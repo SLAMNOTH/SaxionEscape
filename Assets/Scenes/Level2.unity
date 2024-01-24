@@ -9062,7 +9062,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 317031378}
   smoothSpeed: 4.81
-  offset: {x: 2.5, y: 0.92, z: 0}
+  offset: {x: 1.09, y: 0.92, z: 0}
 --- !u!81 &1679077628
 AudioListener:
   m_ObjectHideFlags: 0
