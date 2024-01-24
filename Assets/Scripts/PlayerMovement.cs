@@ -13,25 +13,59 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip koffieSoundAfgelopen;
     public PowerUp powerup;
     public bool koffieSoundGespeeld;
+    Rigidbody2D rigidbody2;
 
-
+    private Gyroscope gyro;
+    private bool gyroEnabled;
     // Power-up variables
     private float originalRunSpeed;
     private bool isSpeedBoosted = false;
+    float dirX;
+    float movespeed = 3f;
 
     // Start is called before the first frame update
     void Start()
     {
         originalRunSpeed = runSpeed;
+        rigidbody2 = gameObject.GetComponent<Rigidbody2D>();
+
+        gyroEnabled = EnableGyro();
+    }
+
+    private bool EnableGyro()
+    {
+        if (SystemInfo.supportsGyroscope)
+        {
+            gyro = Input.gyro;
+            gyro.enabled = true;
+            return true;
+        }
+        return false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        if (gyroEnabled)
+        {
+            dirX = Input.acceleration.x * movespeed;
+        }
+        else
+        {
+            dirX = Input.acceleration.x * movespeed;
+        }
+        dirX = Mathf.Clamp(dirX, -1f, 1f);
+
+        horizontalMove = dirX * runSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump" ))
+        {
+            jump = true;
+            animator.SetBool("IsJumping", true);
+        }
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             jump = true;
             animator.SetBool("IsJumping", true);
