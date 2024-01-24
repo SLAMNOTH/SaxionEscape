@@ -8,10 +8,30 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Level1");
     }
 
+    public void SkipToLevel2()
+    {
+        SceneManager.LoadScene("Level2");
+    }
+
+    public void SkipToLevel3()
+    {
+        SceneManager.LoadScene("Level3");
+    }
+
+    public void SkipToLevel4()
+    {
+        SceneManager.LoadScene("Level4");
+    }
+
+    public void SkipToEind()
+    {
+        SceneManager.LoadScene("Eind");
+    }
+
     public void OpenOptions()
     {
         // Replace "Options" with the name of your options scene
-        SceneManager.LoadScene("Options");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void ExitGame()
